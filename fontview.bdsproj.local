@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2019/01/20 01:13:52.403.bdsproj,C:\Users\Cricri\Documents\Borland Studio Projects\Project1.bdsproj=C:\Users\Cricri\Documents\Borland Studio Projects\fontview.bdsproj</Transaction>
+    <Transaction>2019/01/20 01:18:00.014.pas,C:\Users\Cricri\Documents\Borland Studio Projects\Unit1.pas=D:\Delphi projects\Font Viewer\Unit1.pas</Transaction>
+    <Transaction>2019/01/20 01:18:00.014.dfm,C:\Users\Cricri\Documents\Borland Studio Projects\Unit1.dfm=D:\Delphi projects\Font Viewer\Unit1.dfm</Transaction>
+    <Transaction>2019/01/20 01:18:01.340.bdsproj,C:\Users\Cricri\Documents\Borland Studio Projects\fontview.bdsproj=D:\Delphi projects\Font Viewer\fontview.bdsproj</Transaction>
+  </Transactions>
+</BorlandProject>
