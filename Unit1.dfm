@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Font Viewer'
   ClientHeight = 498
-  ClientWidth = 541
+  ClientWidth = 561
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -84,16 +84,16 @@ object Form1: TForm1
   OldCreateOrder = False
   OnCreate = FormCreate
   DesignSize = (
-    541
+    561
     498)
   PixelsPerInch = 120
   TextHeight = 16
   object lblLower: TLabel
     Left = 8
-    Top = 440
-    Width = 395
+    Top = 449
+    Width = 545
     Height = 24
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akRight, akBottom]
     Caption = 'the quick brown fox jumps over the lazy dog'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -104,10 +104,10 @@ object Form1: TForm1
   end
   object lblUpper: TLabel
     Left = 8
-    Top = 376
-    Width = 478
+    Top = 398
+    Width = 545
     Height = 24
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akRight, akBottom]
     Caption = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -116,13 +116,21 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
+  object lblSize: TLabel
+    Left = 8
+    Top = 367
+    Width = 29
+    Height = 16
+    Anchors = [akLeft, akBottom]
+    Caption = 'Size:'
+  end
   object ListBox1: TListBox
     Left = 8
     Top = 40
-    Width = 525
+    Width = 545
     Height = 321
     Style = lbOwnerDrawVariable
-    Anchors = [akLeft, akTop, akRight]
+    Anchors = [akLeft, akTop, akRight, akBottom]
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -20
@@ -130,20 +138,84 @@ object Form1: TForm1
     Font.Style = []
     ItemHeight = 30
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
     OnClick = ListBox1Click
     OnDrawItem = ListBox1DrawItem
   end
   object ComboBox1: TComboBox
     Left = 8
     Top = 8
-    Width = 525
+    Width = 545
     Height = 24
     Style = csDropDownList
     Anchors = [akLeft, akTop, akRight]
     DropDownCount = 12
     ItemHeight = 16
-    TabOrder = 1
+    TabOrder = 0
     OnChange = ComboBox1Change
+  end
+  object chkBold: TCheckBox
+    Left = 112
+    Top = 367
+    Width = 57
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Bold'
+    TabOrder = 3
+    OnClick = chkBoldClick
+  end
+  object chkItalic: TCheckBox
+    Left = 175
+    Top = 367
+    Width = 50
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Italic'
+    TabOrder = 4
+    OnClick = chkItalicClick
+  end
+  object chkUnderline: TCheckBox
+    Left = 242
+    Top = 367
+    Width = 89
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Underline'
+    TabOrder = 5
+    OnClick = chkUnderlineClick
+  end
+  object chkStrikeOut: TCheckBox
+    Left = 337
+    Top = 367
+    Width = 89
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = 'Strike Out'
+    TabOrder = 6
+    OnClick = chkStrikeOutClick
+  end
+  object cbbSize: TComboBox
+    Left = 43
+    Top = 367
+    Width = 57
+    Height = 24
+    Anchors = [akLeft, akBottom]
+    ItemHeight = 16
+    TabOrder = 2
+    Text = '12'
+    OnChange = cbbSizeChange
+    Items.Strings = (
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '16'
+      '18'
+      '20')
   end
 end

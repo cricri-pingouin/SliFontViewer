@@ -1,65 +1,142 @@
-Unit Unit1;
+unit Unit1;
 
-Interface
+interface
 
-Uses
-  Windows, Classes, Graphics, Controls, Forms, StdCtrls;
+uses
+  Windows, Classes, Graphics, Controls, Forms, StdCtrls, SysUtils;
 
-Type
-  TForm1 = Class(TForm)
+type
+  TForm1 = class(TForm)
     ListBox1: TListBox;
     ComboBox1: TComboBox;
     lblLower: TLabel;
     lblUpper: TLabel;
-    Procedure ComboBox1Change(Sender: TObject);
-    Procedure FormCreate(Sender: TObject);
-    Procedure ListBox1DrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
-    Procedure ListBox1Click(Sender: TObject);
-  Private
+    chkBold: TCheckBox;
+    chkItalic: TCheckBox;
+    chkUnderline: TCheckBox;
+    chkStrikeOut: TCheckBox;
+    cbbSize: TComboBox;
+    lblSize: TLabel;
+    procedure ComboBox1Change(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ListBox1DrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
+    procedure ListBox1Click(Sender: TObject);
+    procedure chkBoldClick(Sender: TObject);
+    procedure chkItalicClick(Sender: TObject);
+    procedure chkUnderlineClick(Sender: TObject);
+    procedure chkStrikeOutClick(Sender: TObject);
+    procedure cbbSizeChange(Sender: TObject);
+  private
     { Private declarations }
-  Public
+  public
     { Public declarations }
-  End;
+  end;
 
-Var
+var
   Form1: TForm1;
 
-Implementation
+implementation
 
 {$R *.dfm}
 
-Procedure TForm1.ComboBox1Change(Sender: TObject);
-Begin
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  ComboBox1.Items := Screen.Fonts;
+  //OR:
+  //for i := 0 to Screen.Fonts.Count - 1 do
+  //  ComboBox1.Items.Add(Screen.Fonts.Strings[i]);
+  ComboBox1.ItemIndex := 0;
+  //To show the items in the corresponding font, the Style of the Listbox should be lbOwnerDrawVariable
+  ListBox1.Items := Screen.Fonts;
+  ListBox1.ItemIndex := 0;
+  Form1.Caption := 'Font Viewer (' + IntToStr(Screen.Fonts.Count) + ' fonts)';
+end;
+
+procedure TForm1.cbbSizeChange(Sender: TObject);
+begin
+  lblLower.Font.Size := StrToInt(cbbSize.Text);
+  lblUpper.Font.Size := StrToInt(cbbSize.Text);
+end;
+
+procedure TForm1.chkBoldClick(Sender: TObject);
+begin
+  if chkBold.Checked then
+  begin
+    lblLower.Font.Style := lblLower.Font.Style + [fsBold];
+    lblUpper.Font.Style := lblUpper.Font.Style + [fsBold];
+  end
+  else
+  begin
+    lblLower.Font.Style := lblLower.Font.Style - [fsBold];
+    lblUpper.Font.Style := lblUpper.Font.Style - [fsBold];
+  end;
+end;
+
+procedure TForm1.chkItalicClick(Sender: TObject);
+begin
+  if chkItalic.Checked then
+  begin
+    lblLower.Font.Style := lblLower.Font.Style + [fsItalic];
+    lblUpper.Font.Style := lblUpper.Font.Style + [fsItalic];
+  end
+  else
+  begin
+    lblLower.Font.Style := lblLower.Font.Style - [fsItalic];
+    lblUpper.Font.Style := lblUpper.Font.Style - [fsItalic];
+  end;
+end;
+
+procedure TForm1.chkUnderlineClick(Sender: TObject);
+begin
+  if chkUnderline.Checked then
+  begin
+    lblLower.Font.Style := lblLower.Font.Style + [fsUnderline];
+    lblUpper.Font.Style := lblUpper.Font.Style + [fsUnderline];
+  end
+  else
+  begin
+    lblLower.Font.Style := lblLower.Font.Style - [fsUnderline];
+    lblUpper.Font.Style := lblUpper.Font.Style - [fsUnderline];
+  end;
+end;
+
+procedure TForm1.chkStrikeOutClick(Sender: TObject);
+begin
+  if chkStrikeOut.Checked then
+  begin
+    lblLower.Font.Style := lblLower.Font.Style + [fsStrikeOut];
+    lblUpper.Font.Style := lblUpper.Font.Style + [fsStrikeOut];
+  end
+  else
+  begin
+    lblLower.Font.Style := lblLower.Font.Style - [fsStrikeOut];
+    lblUpper.Font.Style := lblUpper.Font.Style - [fsStrikeOut];
+  end;
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+begin
   ListBox1.ItemIndex := ComboBox1.ItemIndex;
   lblLower.Font.Name := ComboBox1.Items[ComboBox1.ItemIndex];
   lblUpper.Font.Name := ComboBox1.Items[ComboBox1.ItemIndex];
-End;
+end;
 
-Procedure TForm1.FormCreate(Sender: TObject);
-Begin
-  ComboBox1.Items := Screen.Fonts;
-  ComboBox1.ItemIndex := 0;
-  ListBox1.Items := Screen.Fonts;
-  ListBox1.ItemIndex := 0;
-End;
-
-Procedure TForm1.ListBox1Click(Sender: TObject);
-Begin
+procedure TForm1.ListBox1Click(Sender: TObject);
+begin
   ComboBox1.ItemIndex := ListBox1.ItemIndex;
   lblLower.Font.Name := ComboBox1.Items[ComboBox1.ItemIndex];
   lblUpper.Font.Name := ComboBox1.Items[ComboBox1.ItemIndex];
-End;
+end;
 
-Procedure TForm1.ListBox1DrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
-Begin
-  With ListBox1 Do
-  Begin
+procedure TForm1.ListBox1DrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
+begin
+  with ListBox1 do
+  begin
     Canvas.fillrect(Rect);
-    //Canvas.Font.Style := [fsbold];
     Canvas.Font.Name := Listbox1.Items[Index];
     Canvas.textout(Rect.Left, Rect.Top, Listbox1.Items[Index]);
-  End;
-End;
+  end;
+end;
 
-End.
+end.
 
