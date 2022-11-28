@@ -30,6 +30,7 @@ type
     procedure cbbSizeChange(Sender: TObject);
     procedure btnBgndColClick(Sender: TObject);
     procedure btnFontColClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,7 +54,14 @@ begin
   //To show the items in the corresponding font, the Style of the Listbox should be lbOwnerDrawVariable
   ListBox1.Items := Screen.Fonts;
   ListBox1.ItemIndex := 0;
+  cbbSize.ItemIndex := 6;
   Form1.Caption := 'Font Viewer (' + IntToStr(Screen.Fonts.Count) + ' fonts)';
+end;
+
+procedure TForm1.FormResize(Sender: TObject);
+begin
+  lblUpper.Width := Form1.Width - 30;
+  lblLower.Width := Form1.Width - 30;
 end;
 
 procedure TForm1.btnBgndColClick(Sender: TObject);
