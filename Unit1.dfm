@@ -91,7 +91,7 @@ object Form1: TForm1
   object lblLower: TLabel
     Left = 8
     Top = 449
-    Width = 545
+    Width = 395
     Height = 24
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'the quick brown fox jumps over the lazy dog'
@@ -105,7 +105,7 @@ object Form1: TForm1
   object lblUpper: TLabel
     Left = 8
     Top = 398
-    Width = 545
+    Width = 478
     Height = 24
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
@@ -118,7 +118,7 @@ object Form1: TForm1
   end
   object lblSize: TLabel
     Left = 8
-    Top = 367
+    Top = 370
     Width = 29
     Height = 16
     Anchors = [akLeft, akBottom]
@@ -165,7 +165,7 @@ object Form1: TForm1
     OnClick = chkBoldClick
   end
   object chkItalic: TCheckBox
-    Left = 175
+    Left = 167
     Top = 367
     Width = 50
     Height = 25
@@ -175,7 +175,7 @@ object Form1: TForm1
     OnClick = chkItalicClick
   end
   object chkUnderline: TCheckBox
-    Left = 242
+    Left = 223
     Top = 367
     Width = 89
     Height = 25
@@ -185,7 +185,7 @@ object Form1: TForm1
     OnClick = chkUnderlineClick
   end
   object chkStrikeOut: TCheckBox
-    Left = 337
+    Left = 305
     Top = 367
     Width = 89
     Height = 25
@@ -217,5 +217,23 @@ object Form1: TForm1
       '16'
       '18'
       '20')
+  end
+  object btnBgndCol: TButton
+    Left = 392
+    Top = 367
+    Width = 74
+    Height = 25
+    Caption = 'Bgnd color'
+    TabOrder = 7
+    OnClick = btnBgndColClick
+  end
+  object btnFontCol: TButton
+    Left = 471
+    Top = 367
+    Width = 74
+    Height = 25
+    Caption = 'Font color'
+    TabOrder = 8
+    OnClick = btnFontColClick
   end
 end

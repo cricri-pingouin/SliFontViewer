@@ -3,7 +3,7 @@ unit Unit1;
 interface
 
 uses
-  Windows, Classes, Graphics, Controls, Forms, StdCtrls, SysUtils;
+  Windows, Classes, Graphics, Controls, Forms, StdCtrls, SysUtils, Dialogs;
 
 type
   TForm1 = class(TForm)
@@ -17,6 +17,8 @@ type
     chkStrikeOut: TCheckBox;
     cbbSize: TComboBox;
     lblSize: TLabel;
+    btnBgndCol: TButton;
+    btnFontCol: TButton;
     procedure ComboBox1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure ListBox1DrawItem(Control: TWinControl; Index: Integer; Rect: TRect; State: TOwnerDrawState);
@@ -26,6 +28,8 @@ type
     procedure chkUnderlineClick(Sender: TObject);
     procedure chkStrikeOutClick(Sender: TObject);
     procedure cbbSizeChange(Sender: TObject);
+    procedure btnBgndColClick(Sender: TObject);
+    procedure btnFontColClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,6 +54,29 @@ begin
   ListBox1.Items := Screen.Fonts;
   ListBox1.ItemIndex := 0;
   Form1.Caption := 'Font Viewer (' + IntToStr(Screen.Fonts.Count) + ' fonts)';
+end;
+
+procedure TForm1.btnBgndColClick(Sender: TObject);
+var
+  Dlg: TColorDialog;
+begin
+  Dlg := TColorDialog.Create(Form1);
+  Dlg.Color := Form1.Color;
+  if Dlg.Execute then
+    Form1.Color := Dlg.Color;
+end;
+
+procedure TForm1.btnFontColClick(Sender: TObject);
+var
+  Dlg: TColorDialog;
+begin
+  Dlg := TColorDialog.Create(Form1);
+  Dlg.Color := lblUpper.Font.Color;
+  if Dlg.Execute then
+  begin
+    lblUpper.Font.Color := Dlg.Color;
+    lblLower.Font.Color := Dlg.Color;
+  end;
 end;
 
 procedure TForm1.cbbSizeChange(Sender: TObject);
