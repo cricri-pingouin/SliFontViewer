@@ -67,11 +67,28 @@ end;
 procedure TForm1.btnBgndColClick(Sender: TObject);
 var
   Dlg: TColorDialog;
+  ControlsCol: TColor;
+  R, G, B: Integer;
 begin
   Dlg := TColorDialog.Create(Form1);
   Dlg.Color := Form1.Color;
   if Dlg.Execute then
+  begin
     Form1.Color := Dlg.Color;
+    //Calculate brightness using: http://alienryderflex.com/hsp.html
+    R := Dlg.Color and $FF;
+    G := (Dlg.Color and $FF00) shr 8;
+    B := (Dlg.Color and $FF0000) shr 16;
+    if ((0.299 * R * R + 0.587 * G * G + 0.114 * B * B) > 16256.25) then
+      ControlsCol := clBlack
+    else
+      ControlsCol := clWhite;
+    lblSize.Font.Color := ControlsCol;
+    chkBold.Font.Color := ControlsCol;
+    chkItalic.Font.Color := ControlsCol;
+    chkStrikeOut.Font.Color := ControlsCol;
+    chkUnderline.Font.Color := ControlsCol;
+  end;
 end;
 
 procedure TForm1.btnFontColClick(Sender: TObject);

@@ -92,7 +92,7 @@ object Form1: TForm1
   object lblLower: TLabel
     Left = 8
     Top = 469
-    Width = 560
+    Width = 395
     Height = 24
     Anchors = [akLeft, akBottom]
     Caption = 'the quick brown fox jumps over the lazy dog'
@@ -106,7 +106,7 @@ object Form1: TForm1
   object lblUpper: TLabel
     Left = 8
     Top = 417
-    Width = 560
+    Width = 478
     Height = 24
     Anchors = [akLeft, akBottom]
     Caption = 'THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG'
@@ -119,7 +119,7 @@ object Form1: TForm1
   end
   object lblSize: TLabel
     Left = 8
-    Top = 387
+    Top = 390
     Width = 29
     Height = 16
     Anchors = [akLeft, akBottom]
